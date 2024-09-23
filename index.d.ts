@@ -7,9 +7,9 @@
  * https://www.typescriptlang.org/docs/handbook/declaration-files/publishing.html
  */
 
-import { Express } from 'express';
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { SwaggerUiOptions } from "swagger-ui-express"
+import {Express} from 'express';
+import {OpenAPIV2, OpenAPIV3} from 'openapi-types';
+import {SwaggerUiOptions} from "swagger-ui-express"
 
 /** re-export for ease of use for the end user */
 export {
@@ -82,6 +82,14 @@ export function handleResponses(expressApp: Express, options: HandleResponsesOpt
  * The options are for these tasks.
  */
 export function handleRequests(): void;
+
+
+/**
+ * serve the openAPI docs with swagger at a specified path / url
+ *
+ */
+export function serveApiDocs(): void;
+
 
 /**
  * @warn it's preferred that you use `handleResponses`,

@@ -213,6 +213,9 @@ function prepareSpec() {
  *
  * @returns void
  */
+/**
+ * @type { typeof import('./index').serveApiDocs }
+ */
 function serveApiDocs() {
   prepareSpec();
 
@@ -420,6 +423,7 @@ function handleResponses(expressApp,
       }
       
     } catch (e) {
+      console.log(e);
       /** TODO - shouldn't we do something here? */
     } finally {
       /** always call the next middleware */
@@ -434,10 +438,10 @@ function handleResponses(expressApp,
 function handleRequests() {
   
   const isIgnoredEnvironment = ignoredNodeEnvironments.includes(process.env.NODE_ENV);
-  if (serveDocs || !isIgnoredEnvironment) {      
-    /** forward options to `serveApiDocs`: */
-    serveApiDocs();
-  }
+ // if (serveDocs || !isIgnoredEnvironment) {
+ //   /** forward options to `serveApiDocs`: */
+ //   serveApiDocs();
+ // }
 
   if (isIgnoredEnvironment) {
     return;
@@ -535,6 +539,7 @@ const setPackageInfoPath = pkgInfoPath => {
 module.exports = {
   handleResponses,
   handleRequests,
+  serveApiDocs,
   init,
   getSpec,
   getSpecV3,
